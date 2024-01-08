@@ -18,3 +18,9 @@ for location in LOCATIONS:
         DATA.append ({"Location": location, "Item Name": item, "Price": price})
 
 print(DATA)
+
+unique_items = set(item['Item name'] for item in DATA)
+items_options = [{'label': item, 'value':item} for item in unique_items]
+
+print(items_options)
+
