@@ -71,3 +71,5 @@ def update_prices(selected_items):
     
     return price_outputs
 
+if __name__ == "__main__":
+    app.run_server(debug=True)
