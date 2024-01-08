@@ -48,3 +48,9 @@ app.layout = html.Div([
 
 
 ])
+
+@app.callback(
+    [Output('output-container','children')]+[
+        Output(f'{location.lower().replace(".","").replace(" ","_")}-price', "children") for lcoation in LOCATIONS],
+    [Input('dropdown-menu', 'value')]
+)
