@@ -54,3 +54,20 @@ app.layout = html.Div([
         Output(f'{location.lower().replace(".","").replace(" ","_")}-price', "children") for lcoation in LOCATIONS],
     [Input('dropdown-menu', 'value')]
 )
+def update_prices(selected_items):
+    price_output = []
+    selected_item_data = [item for item in DATA if item['item Name'] == selected_item]
+
+    if selected_item_data:
+        price_outputs.append(f"Price: {selected_item_data[0]["Price"]}")
+        for location in LOCATIONS:
+            location_data = next((item for item in selected_item_data if item['Location']== location), None)
+            if location_data:
+                price_outputs.append(location_data['Price'])
+            else:
+                price_outputs.append("Price: N/A")
+    else:
+        price_outputs = ["Price: N/A"] * (len(LOCATIONS))
+    
+    return price_outputs
+
