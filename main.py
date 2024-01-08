@@ -24,3 +24,27 @@ items_options = [{'label': item, 'value':item} for item in unique_items]
 
 print(items_options)
 
+app = dash.Dash(__name__)
+
+app.layout = html.Div([
+    dcc.Dropdown(
+        id = 'dropdownmenu'
+        options = items_options,
+        value='T5_PLANKS',
+        style={'width': '50%'}
+    ), html.Div(id="output-container"),
+
+    html.Div([
+        *[html.H3(location, style={"color":"grey"}) for location in LOCATIONS],
+
+    ], classname='albion_main-container', style={'display': 'flex', 'justify-content':'space-between'}),
+    
+    html.Div([
+        html.H2(id='lymhurst-price'),
+        html.H2(id='bridgewatch-price'),
+        html.H2(id='thetford-price'),
+        html.H2(id='fort-sterling-price')
+    ], className='albion_main-contaienr',style={'display': 'flex', 'justify-content':'space-between'}),
+
+
+])
