@@ -3,11 +3,11 @@ from dash import html, dcc, Input, Output
 import requests
 PRICE_URL = "https://www.albion-online-data.com/api/v2/stats/prices/"
 
-LOCATIONS = ['Lymhusrt', 'Bridgewatch', 'Thetford', 'Fort Sterling']
+LOCATIONS = ['Lymhurst', 'Bridgewatch', 'Thetford', 'Fort Sterling']
 
 QUALITY = '0'
 
-ITEMS_OF_INTREST = ['T5_PLANKS', "T4_MEAL_SALAD"]
+ITEMS_OF_INTREST = ["T4_CAPEITEM_FW_LYMHURST@3"]
 
 DATA = []
 
@@ -17,9 +17,8 @@ for location in LOCATIONS:
         price = request.json()[0]["sell_price_min"]
         DATA.append ({"Location": location, "Item Name": item, "Price": price})
 
-print(DATA)
 
-unique_items = set(item['Item name'] for item in DATA)
+unique_items = set(item['Item Name'] for item in DATA)
 items_options = [{'label': item, 'value':item} for item in unique_items]
 
 print(items_options)
@@ -28,7 +27,7 @@ app = dash.Dash(__name__)
 
 app.layout = html.Div([
     dcc.Dropdown(
-        id = 'dropdownmenu'
+        id = 'dropdown-menu',
         options = items_options,
         value='T5_PLANKS',
         style={'width': '50%'}
@@ -37,29 +36,31 @@ app.layout = html.Div([
     html.Div([
         *[html.H3(location, style={"color":"grey"}) for location in LOCATIONS],
 
-    ], classname='albion_main-container', style={'display': 'flex', 'justify-content':'space-between'}),
+    ], className='albion_main-container', style={'display': 'flex', 'justify-content':'space-between'}),
     
     html.Div([
         html.H2(id='lymhurst-price'),
         html.H2(id='bridgewatch-price'),
         html.H2(id='thetford-price'),
-        html.H2(id='fort-sterling-price')
+        html.H2(id='fort_sterling-price')
     ], className='albion_main-contaienr',style={'display': 'flex', 'justify-content':'space-between'}),
 
-
+print("JACOVB")
 ])
 
 @app.callback(
     [Output('output-container','children')]+[
-        Output(f'{location.lower().replace(".","").replace(" ","_")}-price', "children") for lcoation in LOCATIONS],
+        Output(f'{location.lower().replace(".","").replace(" ","_")}-price', "children") for location in LOCATIONS],
     [Input('dropdown-menu', 'value')]
 )
-def update_prices(selected_items):
-    price_output = []
-    selected_item_data = [item for item in DATA if item['item Name'] == selected_item]
+
+def update_prices(selected_item):
+    print("JACOVB")
+    price_outputs = []
+    selected_item_data = [item for item in DATA if item['Item Name'] == selected_item]
 
     if selected_item_data:
-        price_outputs.append(f"Price: {selected_item_data[0]["Price"]}")
+        price_outputs.append(f"Price: {selected_item_data[0]['Price']}")
         for location in LOCATIONS:
             location_data = next((item for item in selected_item_data if item['Location']== location), None)
             if location_data:
@@ -67,8 +68,8 @@ def update_prices(selected_items):
             else:
                 price_outputs.append("Price: N/A")
     else:
-        price_outputs = ["Price: N/A"] * (len(LOCATIONS))
-    
+        price_outputs = ["Price: N/A"] * (len(LOCATIONS) + 1)
+    print(price_outputs)
     return price_outputs
 
 if __name__ == "__main__":
