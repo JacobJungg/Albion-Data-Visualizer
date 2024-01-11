@@ -55,7 +55,6 @@ print("JACOVB")
 )
 
 def update_prices(selected_item):
-    print("JACOVB")
     price_outputs = []
     selected_item_data = [item for item in DATA if item['Item Name'] == selected_item]
 
