@@ -1,5 +1,7 @@
 import dash
 from dash import html, dcc, Input, Output
+from datetime import date
+
 from data_fetcher import fetch_data
 
 DATA = fetch_data()
@@ -30,6 +32,15 @@ def create_layout(unique_items):
             html.H2(id='thetford-price'),
             html.H2(id='fort_sterling-price')
         ], className='albion_main-contaienr',style={'display': 'flex', 'justify-content':'space-between'}),
+    
+    html.Div([
+    dcc.DatePickerRange(
+        id='date-picker-range',
+        start_date=date(2024, 1, 15),
+        end_date_placeholder_text='Select a date!'
+    )
+])
+    
     ])
 
     @app.callback(
