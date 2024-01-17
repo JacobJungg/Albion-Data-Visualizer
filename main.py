@@ -7,7 +7,7 @@ LOCATIONS = ['Lymhurst', 'Bridgewatch', 'Thetford', 'Fort Sterling']
 
 QUALITY = '0'
 
-ITEMS_OF_INTREST = [", T4_CAPEITEM_FW_LYMHURST@1, T4_CAPEITEM_FW_LYMHURST@2, T4_CAPEITEM_FW_LYMHURST@3"]
+ITEMS_OF_INTREST = ["T4_CAPEITEM_FW_LYMHURST@1", "T4_CAPEITEM_FW_LYMHURST@3"]
 
 DATA = []
 
@@ -45,7 +45,6 @@ app.layout = html.Div([
         html.H2(id='fort_sterling-price')
     ], className='albion_main-contaienr',style={'display': 'flex', 'justify-content':'space-between'}),
 
-print("JACOVB")
 ])
 
 @app.callback(
