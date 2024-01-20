@@ -50,7 +50,7 @@ def create_layout(unique_items):
                         y=[1,2,3,4,5],
                         name='A',
                         marker=dict(
-                            color='rgb(55, 83, 109)'
+                            color='rgb(10, 10, 10)'
                         )
                     ),
                     dict(
