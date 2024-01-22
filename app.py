@@ -80,12 +80,8 @@ def create_layout(unique_items):
 
 
 
-
-
-
     #Bottem of main div
     ])
-
     @app.callback(
         [Output('output-container', 'children')] +
         [Output(f'{location.lower().replace(".", "").replace(" ", "_")}-price', "children") for location in LOCATIONS],
