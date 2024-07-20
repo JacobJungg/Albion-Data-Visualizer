@@ -5,6 +5,11 @@ Albion Economics utilizes...
 - pandas for streamlining items and prices
 - AI ChatBot utilizing OpenAI and Pinecone to help users make the most of the marketplace
 
+This code does not include...
+- database irl
+- pinecone index, enviornment or apikey
+- upstash redis rest url or rest token
+- openai apikey
 
 ## Introduction
 
