@@ -6,10 +6,11 @@ Albion Economics utilizes...
 - AI ChatBot utilizing OpenAI and Pinecone to help users make the most of the marketplace
 
 This code does not include...
-- database irl
+- database url
 - pinecone index, enviornment or apikey
 - upstash redis rest url or rest token
 - openai apikey
+- replicate apitoken
 
 ## Introduction
 
