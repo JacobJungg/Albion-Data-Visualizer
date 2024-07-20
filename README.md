@@ -3,7 +3,7 @@
 Albion Economics utilizes...
 - Shadcn/ui components for a sleek easily maneuverable frontend
 - pandas for streamlining items and prices
-- AI ChatBot to help users make the most of the marketplace
+- AI ChatBot utilizing OpenAI and Pinecone to help users make the most of the marketplace
 
 
 ## Introduction
